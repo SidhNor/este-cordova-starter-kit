@@ -1,0 +1,51 @@
+# OSX
+.DS_Store
+
+# Este
+src/common/secrets.json
+src/native/config.js
+src/native/messages.js
+
+# Cordova specific
+/plugins
+/platforms
+/www/assets
+/www/*.html
+
+# IJ
+.idea
+*.iml
+.gradle
+local.properties
+
+# node.js
+node_modules/
+npm-debug.log
+webpack-assets.json
+
+bower_components
+*.sublime-workspace
+*.idea
+
+# firebase
+firebase/rules.json
+
+
+# Xcode
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
