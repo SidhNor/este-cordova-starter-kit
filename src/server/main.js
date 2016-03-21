@@ -7,6 +7,10 @@ import frontend from './frontend';
 const app = express();
 
 app.use('/api/v1', api);
+
+//Use mode rewrite if need-be
+//app.use(modRewrite);
+
 app.use(frontend);
 app.use(errorHandler);
 

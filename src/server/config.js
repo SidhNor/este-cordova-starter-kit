@@ -10,8 +10,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 // production server. 'foo__bar=2 gulp' will set config to '{foo: {bar: 2}}'
 nconf.env('__');
 
-// For local development with secrets. Check src/common/_secrets.json file.
-// nconf.file('src/common/secrets.json');
+// For local development with secrets. Check src/common/secrets.json file.
+nconf.file('src/common/secrets.json');
 
 // Remember, never put secrets in default config.
 // Use environment variables for production, and secrets.json for development.
@@ -21,7 +21,7 @@ nconf.defaults({
   firebaseUrl: 'https://este.firebaseio.com',
   googleAnalyticsId: 'UA-XXXXXXX-X',
   isProduction,
-  locales: ['cs', 'en', 'fr', 'ro'],
+  locales: ['en'],
   port: process.env.PORT || 8000
 });
 
