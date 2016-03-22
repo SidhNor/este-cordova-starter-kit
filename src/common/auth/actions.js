@@ -27,6 +27,9 @@ export function login(fields) {
         if (error.status === 401) {
           throw new ValidationError('wrongPassword', { prop: 'password' });
         }
+        if (error.status === 404) {
+          throw new ValidationError('notFound', { prop: 'password' });
+        }
         throw error;
       }
     };
@@ -36,15 +39,6 @@ export function login(fields) {
       payload: {
         promise: getPromise()
       }
-    };
-  };
-}
-
-export function logout() {
-  return ({ firebase }) => {
-    firebase.unauth();
-    return {
-      type: LOGOUT
     };
   };
 }

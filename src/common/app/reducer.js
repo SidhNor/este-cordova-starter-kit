@@ -8,7 +8,6 @@ import device from '../device/reducer';
 import intl from '../intl/reducer';
 import todos from '../todos/reducer';
 import ui from '../ui/reducer';
-import users from '../users/reducer';
 
 export default combineReducers({
   auth,
@@ -18,6 +17,5 @@ export default combineReducers({
   reduxFields,
   routing,
   todos,
-  ui,
-  users
+  ui
 });

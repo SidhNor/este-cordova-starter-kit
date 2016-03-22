@@ -14,7 +14,10 @@ module.exports = function(ctx) {
   lt.stderr.pipe(process.stderr);
   lt.on('exit', function (code) {
     util.puts('Gulp exited with exit code ' + code);
-    deferral.resolve()
+    if (code === 0)
+      deferral.resolve()
+    else
+      deferral.reject()
   });
 
   return deferral.promise;

@@ -1,19 +1,12 @@
 import Component from 'react-pure-render/component';
-import React, { PropTypes } from 'react';
+import React from 'react';
 import linksMessages from '../../common/app/linksMessages';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
-class Header extends Component {
-
-  static propTypes = {
-    viewer: PropTypes.object
-  };
+export default class Header extends Component {
 
   render() {
-    const { viewer } = this.props;
-
     return (
       <header>
         <h1>
@@ -22,11 +15,6 @@ class Header extends Component {
           </Link>
         </h1>
         <ul>
-          <li>
-            <Link activeClassName="active" to="/firebase">
-              <FormattedMessage {...linksMessages.firebase} />
-            </Link>
-          </li>
           <li>
             <Link activeClassName="active" to="/todos">
               <FormattedMessage {...linksMessages.todos} />
@@ -37,25 +25,9 @@ class Header extends Component {
               <FormattedMessage {...linksMessages.intl} />
             </Link>
           </li>
-          <li>
-            <Link activeClassName="active" to="/me">
-              <FormattedMessage {...linksMessages.me} />
-            </Link>
-          </li>
-          {!viewer &&
-            <li>
-              <Link activeClassName="active" to="/login">
-                <FormattedMessage {...linksMessages.login} />
-              </Link>
-            </li>
-          }
         </ul>
       </header>
     );
   }
 
 }
-
-export default connect(state => ({
-  viewer: state.users.viewer
-}))(Header);

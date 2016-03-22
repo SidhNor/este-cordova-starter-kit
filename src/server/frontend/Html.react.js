@@ -31,12 +31,18 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');` }}
       />;
 
+    const serverlessMeta = (process.env.IS_SERVERLESS &&
+      <meta httpEquiv="Content-Security-Policy"
+        content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com https://cdn.polyfill.io 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"
+      />);
+
     return (
       <html lang="en">
         <head>
           <meta charSet="utf-8" />
           <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
           <meta content="ie=edge" httpEquiv="x-ua-compatible" />
+          {serverlessMeta}
           {helmet.title.toComponent()}
           {helmet.base.toComponent()}
           {helmet.meta.toComponent()}

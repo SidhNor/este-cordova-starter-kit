@@ -32,7 +32,6 @@
     <allow-intent href="itms-apps:*"/>
   </platform>
   <platform name="browser">
-    <preference name="SplashScreen" value="/img/logo.png"/>
     <preference name="ShowSplashScreen" value="true"/>
     <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="SplashScreenBackgroundColor" value="#EEE"/>

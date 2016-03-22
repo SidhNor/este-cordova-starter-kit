@@ -56,6 +56,7 @@ const getScriptHtml = (state, headers, hostname, appJsFilename) =>
     <script>
       window.__INITIAL_STATE__ = ${serialize(state)};
     </script>
+    ${process.env.IS_SERVERLESS ? '<script src="cordova.js"></script>' : ''}
     <script src="${appJsFilename}"></script>
   `;
 
@@ -95,8 +96,7 @@ export default function render(req, res, next) {
   const protocol = req.headers['x-forwarded-proto'] || req.protocol;
   const initialState = {
     config: {
-      appName: config.appName,
-      firebaseUrl: config.firebaseUrl
+      appName: config.appName
     },
     intl: {
       currentLocale,

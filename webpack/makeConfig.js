@@ -92,7 +92,7 @@ export default function makeConfig(isDevelopment) {
       path: constants.BUILD_DIR,
       filename: '[name]-[hash].js',
       chunkFilename: '[name]-[chunkhash].js',
-      publicPath: '/assets/'
+      publicPath: process.env.IS_SERVERLESS ? 'assets/' : '/assets/'
     },
     plugins: (() => {
       const plugins = [

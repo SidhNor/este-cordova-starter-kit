@@ -33,7 +33,7 @@ gulp.task('env', () => {
   process.env.NODE_ENV = args.production ? 'production' : 'development';
 });
 
-gulp.task('clean', () => del('build/*'));
+gulp.task('clean', () => del(['build/*', 'www/assets/*']));
 
 gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
@@ -89,6 +89,7 @@ gulp.task('default', ['server']);
 gulp.task('to-html', done => {
   args.production = true;
   process.env.IS_SERVERLESS = true;
+  process.env.SERVER_URL = 'http://mysvr.com/api/v1';
 
   const urls = {
     '/': 'index.html',

@@ -1,5 +1,4 @@
 import * as storage from 'redux-storage';
-import Firebase from 'firebase';
 import appReducer from './app/reducer';
 import createFetch from './createFetch';
 import createLogger from 'redux-logger';
@@ -15,6 +14,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 
 // Este dependency injection middleware. So simple that we don't need a lib.
 // It's like mixed redux-thunk and redux-inject.
+
 const injectMiddleware = deps => ({ dispatch, getState }) => next => action =>
   next(typeof action === 'function'
     ? action({ ...deps, dispatch, getState })
@@ -23,8 +23,8 @@ const injectMiddleware = deps => ({ dispatch, getState }) => next => action =>
 
 const createUniversalFetch = initialState => {
   const serverUrl =
+    process.env.SERVER_URL || // Must be set for Native production app.
     initialState.device.host || // Autodetected in Node.
-    process.env.SERVER_URL || // Must be set for React Native production app.
     (process.env.IS_BROWSER
       ? '' // Browser can handle relative urls.
       : 'http://localhost:8000' // Failback for dev.
@@ -32,13 +32,10 @@ const createUniversalFetch = initialState => {
   return createFetch(serverUrl);
 };
 
-const isReactNative =
-  typeof navigator === 'object' &&
-  navigator.product === 'ReactNative';
-
 const enableLogger =
   process.env.NODE_ENV !== 'production' &&
-  process.env.IS_BROWSER || isReactNative;
+  process.env.IS_BROWSER;
+
 
 const enableDevToolsExtension =
   process.env.NODE_ENV !== 'production' &&
@@ -55,11 +52,6 @@ export default function configureStore(options) {
 
   const engineKey = `redux-storage:${initialState.config.appName}`;
   const engine = createEngine && createEngine(engineKey); // No server engine.
-  const firebase = new Firebase(initialState.config.firebaseUrl);
-  // // Check whether connection works.
-  // firebase.child('hello-world').set({
-  //   createdAt: Firebase.ServerValue.TIMESTAMP
-  // });
 
   let reducer = appReducer;
   reducer = recycle(reducer, [LOGOUT], initialState);
@@ -70,7 +62,6 @@ export default function configureStore(options) {
       ...platformDeps,
       engine,
       fetch: createUniversalFetch(initialState),
-      firebase,
       getUid: () => shortid.generate(),
       now: () => Date.now(),
       validate
