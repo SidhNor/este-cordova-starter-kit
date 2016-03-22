@@ -54,7 +54,11 @@ export default function configureStore(options) {
   const engine = createEngine && createEngine(engineKey); // No server engine.
 
   let reducer = appReducer;
-  reducer = recycle(reducer, [LOGOUT], initialState);
+  reducer = recycle(reducer, [LOGOUT], {
+    // Whitelist app initialState props to be preserved after a logout.
+    device: initialState.device,
+    intl: initialState.intl
+  });
 
   const middleware = [
     ...platformMiddleware,
@@ -77,7 +81,6 @@ export default function configureStore(options) {
     ]);
     decoratedEngine = storageDebounce(decoratedEngine, 300);
     middleware.push(storage.createMiddleware(decoratedEngine, [], [
-      LOGOUT,
       SET_CURRENT_LOCALE
     ]));
   }

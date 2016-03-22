@@ -37,7 +37,11 @@ export default class LoginError extends Component {
 
     return (
       <p className="error-message">
-        <FormattedMessage {...messages[error.name]} values={error.params} />
+        {message ?
+          <FormattedMessage {...message} values={error.params} />
+          :
+          error.toString()
+        }
       </p>
     );
   }

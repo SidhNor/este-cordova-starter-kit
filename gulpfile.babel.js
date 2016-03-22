@@ -147,3 +147,27 @@ gulp.task('to-html', done => {
     });
   });
 });
+
+gulp.task('extractDefaultMessages', () => {
+  const through = require('through2');
+  const babel = require('babel-core');
+  const messages = [];
+
+  const getReactIntlMessages = code => babel.transform(code, {
+    plugins: ['react-intl'],
+    presets: ['es2015', 'react', 'stage-1']
+  }).metadata['react-intl'].messages;
+
+  return gulp.src([
+      'src/**/*.js'
+    ])
+    .pipe(through.obj((file, enc, cb) => {
+      const code = file.contents.toString();
+      messages.push(...getReactIntlMessages(code));
+      cb(null, file);
+    }))
+    .on('end', () => {
+      messages.sort((a, b) => a.id.localeCompare(b.id));
+      fs.writeFile('messages/_default.js', JSON.stringify(messages, null, 2));
+    });
+});

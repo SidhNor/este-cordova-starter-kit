@@ -6,23 +6,6 @@
 * **Use the imperative mood ("Move cursor to..." not "Moves cursor to...")**
 * **Limit the first line to 72 characters or less**
 * Reference issues and pull requests liberally
-* Consider starting the commit message with an applicable emoji:
-    * :art: `:art:` when improving the format/structure of the code
-    * :racehorse: `:racehorse:` when improving performance
-    * :non-potable_water: `:non-potable_water:` when plugging memory leaks
-    * :memo: `:memo:` when writing docs
-    * :penguin: `:penguin:` when fixing something on Linux
-    * :apple: `:apple:` when fixing something on Mac OS
-    * :checkered_flag: `:checkered_flag:` when fixing something on Windows
-    * :bug: `:bug:` when fixing a bug
-    * :fire: `:fire:` when removing code or files
-    * :green_heart: `:green_heart:` when fixing the CI build
-    * :white_check_mark: `:white_check_mark:` when adding tests
-    * :lock: `:lock:` when dealing with security
-    * :arrow_up: `:arrow_up:` when upgrading dependencies
-    * :arrow_down: `:arrow_down:` when downgrading dependencies
-    * :shirt: `:shirt:` when removing linter warnings
-
 
 ## Prerequisites
 
@@ -31,6 +14,11 @@ Install [node.js](http://nodejs.org).
 Then install [gulp.js](http://gulpjs.com/).
 ```shell
 npm install -g gulp
+```
+
+Install all project dependencies
+```shell
+npm install
 ```
 
 ## Start Development
@@ -43,3 +31,28 @@ npm install -g gulp
 - `gulp` run app in development mode
 - `gulp -p` run app in production mode
 - `gulp test`
+
+
+## Cordova
+First, make sure you have Cordova installed:
+
+```
+npm install -g cordova
+```
+
+A cordova folder is already created for you. 
+It has a default ` config.xml ` preconfigured with some default plugins and platforms and is also hooked into the webpack build system.
+
+Add the platform(s) you want to build for:
+
+```
+cd cordova/
+cordova platform add ios # or 'android'
+```
+
+To run a packaged app
+
+```
+cordova run ios # or 'android' or 'windows'
+```
+This will also launch the webpack build before packaging.

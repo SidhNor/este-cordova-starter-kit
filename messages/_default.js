@@ -1,9 +1,5 @@
 [
   {
-    "id": "app.links.firebase",
-    "defaultMessage": "Firebase"
-  },
-  {
     "id": "app.links.home",
     "defaultMessage": "Home"
   },
@@ -69,15 +65,11 @@
   },
   {
     "id": "footer.madeByHtml",
-    "defaultMessage": "made by <a href=\"https://twitter.com/steida\">steida</a>"
+    "defaultMessage": "Sample este+cordova starter kit"
   },
   {
     "id": "home.intro",
-    "defaultMessage": "<p>\n        Ahoy, this is\n        <a target=\"_blank\" href=\"https://github.com/este/este\">Este</a> dev stack.\n      </p>"
-  },
-  {
-    "id": "home.native.intro",
-    "defaultMessage": "Este App\n      Press CMD+R to reload\n      Press CMD+D for debug menu"
+    "defaultMessage": "<p>\n        Hi, this is\n        <a target=\"_blank\" href=\"https://github.com/SidhNor/este-cordova-starter-kit\">este-cordova-starter-kit</a> dev stack.\n      </p>"
   },
   {
     "id": "home.title",
@@ -94,30 +86,6 @@
   {
     "id": "intl.page.unreadCount",
     "defaultMessage": "{unreadCount, plural, one {message} other {messages}}"
-  },
-  {
-    "id": "me.page.linkToProfile",
-    "defaultMessage": "Profile"
-  },
-  {
-    "id": "me.page.linkToSettings",
-    "defaultMessage": "Settings"
-  },
-  {
-    "id": "me.page.title",
-    "defaultMessage": "Me"
-  },
-  {
-    "id": "me.page.welcome",
-    "defaultMessage": "Hi {email}. This is your secret page."
-  },
-  {
-    "id": "me.profilePage.title",
-    "defaultMessage": "Profile"
-  },
-  {
-    "id": "me.settingsPage.title",
-    "defaultMessage": "Settings"
   },
   {
     "id": "notFound.continue",
@@ -146,10 +114,6 @@
   {
     "id": "todos.buttons.clearCompleted",
     "defaultMessage": "Clear Completed"
-  },
-  {
-    "id": "todos.leftTodos",
-    "defaultMessage": "{leftTodos, plural, =0 {Nothing, enjoy :-)} one {You have {leftTodos} task} other {You have {leftTodos} tasks}}"
   },
   {
     "id": "todos.newTodo.placeholder",

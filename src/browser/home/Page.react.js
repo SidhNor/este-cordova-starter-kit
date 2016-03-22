@@ -7,13 +7,14 @@ const messages = defineMessages({
   intro: {
     defaultMessage: `
       <p>
-        Ahoy, this is
-        <a target="_blank" href="https://github.com/este/este">Este</a> dev stack.
+        Hi, this is
+        <a target="_blank" href="https://github.com/SidhNor/este-cordova-starter-kit">este-cordova-starter-kit</a> dev stack.
       </p>
     `,
     id: 'home.intro'
   },
   title: {
+    defaultMessage: 'Home',
     defaultMessage: 'Home',
     id: 'home.title'
   }
