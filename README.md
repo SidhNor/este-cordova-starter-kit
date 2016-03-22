@@ -33,6 +33,10 @@ npm install
 - `gulp test`
 
 
+## Translation tasks
+
+- `gulp extractDefaultMessages` extract default translation messages from source hooks
+
 ## Cordova
 First, make sure you have Cordova installed:
 
