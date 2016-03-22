@@ -3,14 +3,12 @@
 
 # Este
 src/common/secrets.json
-src/native/config.js
-src/native/messages.js
 
 # Cordova specific
-/plugins
-/platforms
-/www/assets
-/www/*.html
+cordova/plugins
+cordova/platforms
+cordova/www/assets
+cordova/www/*.html
 
 # IJ
 .idea

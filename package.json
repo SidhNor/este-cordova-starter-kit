@@ -54,7 +54,6 @@
     "fastclick": "^1.0.6",
     "fbjs": "0.8.0-alpha.3",
     "file-loader": "^0.8.5",
-    "firebase": "^2.4.1",
     "gulp": "^3.9.1",
     "gulp-bg": "^0.0.8",
     "gulp-eslint": "2.0.0",

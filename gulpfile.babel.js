@@ -33,7 +33,7 @@ gulp.task('env', () => {
   process.env.NODE_ENV = args.production ? 'production' : 'development';
 });
 
-gulp.task('clean', () => del(['build/*', 'www/assets/*']));
+gulp.task('clean', () => del(['build/*', 'cordova/www/assets/*']));
 
 gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
@@ -136,7 +136,7 @@ gulp.task('to-html', done => {
         moveAssets();
         await toHtml();
         gulp.src('build/**')
-          .pipe(gulp.dest('www'));
+          .pipe(gulp.dest('cordova/www'));
       } catch (error) {
         console.log(error);
       } finally {
