@@ -1,3 +1,4 @@
+import api from './api';
 import config from './config';
 import errorHandler from './lib/errorHandler';
 import express from 'express';
@@ -8,6 +9,7 @@ const app = express();
 // Use mode rewrite if need-be
 // app.use(modRewrite);
 
+app.use('/api/v1', api)
 app.use(frontend);
 app.use(errorHandler);
 
