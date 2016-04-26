@@ -21,6 +21,7 @@ const runEslint = () => {
   const isFixed = file => args.fix && file.eslint && file.eslint.fixed;
   return gulp.src([
     'gulpfile.babel.js',
+    'messages/*.js',
     'src/**/*.js',
     'webpack/*.js'
   ], { base: './' })
@@ -39,21 +40,15 @@ gulp.task('build-webpack', ['env'], webpackBuild);
 gulp.task('build', ['build-webpack']);
 
 gulp.task('eslint', () => runEslint());
-
-// Exit process with an error code (1) on lint error for CI build.
 gulp.task('eslint-ci', () => runEslint().pipe(eslint.failAfterError()));
 
 gulp.task('mocha', () => {
   mochaRunCreator('process')();
 });
-
-// Enable to run single test file
-// ex. gulp mocha-file --file src/browser/components/__test__/Button.js
 gulp.task('mocha-file', () => {
+  // Example: gulp mocha-file --file src/browser/components/__test__/Button.js
   mochaRunCreator('process')({ path: path.join(__dirname, args.file) });
 });
-
-// Continuous test running
 gulp.task('mocha-watch', () => {
   gulp.watch(
     ['src/browser/**', 'src/common/**', 'src/server/**'],
@@ -72,7 +67,6 @@ gulp.task('server-nodemon', shell.task(
   // Normalize makes path cross platform.
   path.normalize('node_modules/.bin/nodemon --ignore webpack-assets.json src/server')
 ));
-
 gulp.task('server', ['env'], done => {
   if (args.production) {
     runSequence('clean', 'build', 'server-node', done);
@@ -89,7 +83,6 @@ gulp.task('default', ['server']);
 gulp.task('to-html', done => {
   args.production = true;
   process.env.IS_SERVERLESS = true;
-  process.env.SERVER_URL = 'http://mysvr.com/api/v1';
 
   const urls = {
     '/': 'index.html',
@@ -168,6 +161,10 @@ gulp.task('extractDefaultMessages', () => {
     }))
     .on('end', () => {
       messages.sort((a, b) => a.id.localeCompare(b.id));
-      fs.writeFile('messages/_default.js', JSON.stringify(messages, null, 2));
+      const eslint = '/* eslint-disable max-len, quote-props, quotes */';
+      const json = JSON.stringify(messages, null, 2);
+      // ES6 allows us to use multiline strings and eslint.
+      const es6code = `${eslint}\nexport default ${json};\n`;
+      fs.writeFile('messages/_default.js', es6code);
     });
 });

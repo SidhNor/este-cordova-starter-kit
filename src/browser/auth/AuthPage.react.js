@@ -2,16 +2,10 @@ import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
 import Login from './Login.react';
 import React, { PropTypes } from 'react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import linksMessages from '../../common/app/linksMessages';
+import { injectIntl, intlShape } from 'react-intl';
 
-const messages = defineMessages({
-  title: {
-    defaultMessage: 'Login',
-    id: 'auth.page.title'
-  }
-});
-
-class Page extends Component {
+class AuthPage extends Component {
 
   static propTypes = {
     intl: intlShape.isRequired,
@@ -20,10 +14,9 @@ class Page extends Component {
 
   render() {
     const { intl, location } = this.props;
-    const title = intl.formatMessage(messages.title);
-
+    const title = intl.formatMessage(linksMessages.login);
     return (
-      <div className="login-page">
+      <div className="auth-page">
         <Helmet title={title} />
         <Login location={location} />
       </div>
@@ -32,4 +25,4 @@ class Page extends Component {
 
 }
 
-export default injectIntl(Page);
+export default injectIntl(AuthPage);

@@ -8,9 +8,8 @@ export default function start(Wrapped) {
   class Start extends Component {
 
     static propTypes = {
-      currentLocale: PropTypes.string.isRequired,
       dispatch: PropTypes.func.isRequired,
-      messages: PropTypes.object.isRequired
+      intl: PropTypes.object.isRequired
     };
 
     componentDidMount() {
@@ -20,9 +19,13 @@ export default function start(Wrapped) {
     }
 
     render() {
-      const { currentLocale, messages } = this.props;
+      const { intl } = this.props;
+      const { currentLocale, defaultLocale, initialNow, messages } = intl;
+
       return (
         <IntlProvider
+          defaultLocale={defaultLocale}
+          initialNow={initialNow}
           key={currentLocale} // https://github.com/yahoo/react-intl/issues/234
           locale={currentLocale}
           messages={messages[currentLocale]}
@@ -35,8 +38,7 @@ export default function start(Wrapped) {
   }
 
   Start = connect(state => ({
-    currentLocale: state.intl.currentLocale,
-    messages: state.intl.messages
+    intl: state.intl
   }))(Start);
 
   return Start;

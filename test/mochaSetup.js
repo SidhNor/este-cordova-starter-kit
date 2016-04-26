@@ -24,5 +24,5 @@ function propagateToGlobal(window) {
     if (key in global) continue;
 
     global[key] = window[key];
-  }
-}
+  };
+};

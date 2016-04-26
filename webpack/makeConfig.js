@@ -1,11 +1,11 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import constants from './constants';
-import ip from 'ip';
 import path from 'path';
-import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
 import webpack from 'webpack';
 import webpackIsomorphicAssets from './assets';
+import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
+import ip from 'ip';
 
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(webpackIsomorphicAssets);
 
@@ -16,7 +16,7 @@ const devtools = 'cheap-module-eval-source-map';
 
 const loaders = {
   css: '',
-  less: '!less-loader',
+  // Why not LESS or Stylus? The battle is over, let's focus on inline styles.
   scss: '!sass-loader',
   sass: '!sass-loader?indentedSyntax'
 };

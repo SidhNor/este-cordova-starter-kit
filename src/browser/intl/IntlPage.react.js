@@ -2,6 +2,7 @@ import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
 import Locales from './Locales.react';
 import React from 'react';
+import linksMessages from '../../common/app/linksMessages';
 import {
   FormattedDate,
   FormattedMessage,
@@ -17,10 +18,6 @@ const messages = defineMessages({
     defaultMessage: 'react-intl demonstration',
     id: 'intl.page.h2'
   },
-  title: {
-    defaultMessage: 'Intl',
-    id: 'intl.page.title'
-  },
   unreadCount: {
     defaultMessage: `{unreadCount, plural,
       one {message}
@@ -30,7 +27,7 @@ const messages = defineMessages({
   }
 });
 
-class Page extends Component {
+class IntlPage extends Component {
 
   static propTypes = {
     intl: intlShape.isRequired
@@ -43,7 +40,7 @@ class Page extends Component {
 
   render() {
     const { intl } = this.props;
-    const title = intl.formatMessage(messages.title);
+    const title = intl.formatMessage(linksMessages.intl);
     // To remember beloved −123 min. https://www.youtube.com/watch?v=VKOv1I8zKso
     const unreadCount = 123;
 
@@ -77,4 +74,4 @@ class Page extends Component {
 
 }
 
-export default injectIntl(Page);
+export default injectIntl(IntlPage);

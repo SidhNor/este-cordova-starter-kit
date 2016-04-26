@@ -9,7 +9,7 @@ const app = express();
 // Use mode rewrite if need-be
 // app.use(modRewrite);
 
-app.use('/api/v1', api)
+app.use('/api/v1', api);
 app.use(frontend);
 app.use(errorHandler);
 

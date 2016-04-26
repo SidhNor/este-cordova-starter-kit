@@ -1,10 +1,10 @@
-import App from './app/App.react';
-import Auth from './auth/Page.react';
-import Home from './home/Page.react';
-import Intl from './intl/Page.react';
-import NotFound from './notfound/Page.react';
+import App from './app/AppPage.react';
+import Auth from './auth/AuthPage.react';
+import Home from './home/HomePage.react';
+import Intl from './intl/IntlPage.react';
+import NotFound from './notfound/NotFoundPage.react';
 import React from 'react';
-import Todos from './todos/Page.react';
+import Todos from './todos/TodosPage.react';
 import { IndexRoute, Route } from 'react-router';
 
 export default function createRoutes(getState) {
@@ -22,7 +22,7 @@ export default function createRoutes(getState) {
     <Route component={App} path="/">
       <IndexRoute component={Home} />
       <Route component={Auth} path="login" />
-      <Route component={Intl} path="intl" onEnter={requireAuth} />
+      <Route component={Intl} path="intl" />
       <Route component={Todos} path="todos" />
       <Route component={NotFound} path="*" />
     </Route>

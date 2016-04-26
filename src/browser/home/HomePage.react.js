@@ -1,26 +1,22 @@
 import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
 import React from 'react';
+import linksMessages from '../../common/app/linksMessages';
 import { FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({
   intro: {
     defaultMessage: `
       <p>
-        Hi, this is
-        <a target="_blank" href="https://github.com/SidhNor/este-cordova-starter-kit">este-cordova-starter-kit</a> dev stack.
+        Ahoy, this is the
+        <a target="_blank" href="https://github.com/este/este">Este</a> dev stack.
       </p>
     `,
     id: 'home.intro'
-  },
-  title: {
-    defaultMessage: 'Home',
-    defaultMessage: 'Home',
-    id: 'home.title'
   }
 });
 
-class Page extends Component {
+class HomePage extends Component {
 
   static propTypes = {
     intl: intlShape.isRequired
@@ -28,7 +24,7 @@ class Page extends Component {
 
   render() {
     const { intl } = this.props;
-    const title = intl.formatMessage(messages.title);
+    const title = intl.formatMessage(linksMessages.home);
 
     return (
       <div className="home-page">
@@ -42,4 +38,4 @@ class Page extends Component {
 
 }
 
-export default injectIntl(Page);
+export default injectIntl(HomePage);

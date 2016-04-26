@@ -1,4 +1,4 @@
-[
+export default [
   {
     "id": "app.links.home",
     "defaultMessage": "Home"
@@ -88,6 +88,26 @@
     "defaultMessage": "{unreadCount, plural, one {message} other {messages}}"
   },
   {
+    "id": "me.page.linkToProfile",
+    "defaultMessage": "Profile"
+  },
+  {
+    "id": "me.page.linkToSettings",
+    "defaultMessage": "Settings"
+  },
+  {
+    "id": "me.page.welcome",
+    "defaultMessage": "Hi {email}. This is your secret page."
+  },
+  {
+    "id": "me.profilePage.title",
+    "defaultMessage": "Profile"
+  },
+  {
+    "id": "me.settingsPage.title",
+    "defaultMessage": "Settings"
+  },
+  {
     "id": "notFound.continue",
     "defaultMessage": "Continue here please."
   },
@@ -116,15 +136,15 @@
     "defaultMessage": "Clear Completed"
   },
   {
-    "id": "todos.newTodo.placeholder",
-    "defaultMessage": "What needs to be done?"
+    "id": "todos.leftTodos",
+    "defaultMessage": "{leftTodos, plural, =0 {Nothing, enjoy :-)} one {You have {leftTodos} task} other {You have {leftTodos} tasks}}"
   },
   {
-    "id": "todos.page.title",
-    "defaultMessage": "Todos"
+    "id": "todos.newTodo.placeholder",
+    "defaultMessage": "What needs to be done?"
   },
   {
     "id": "todos.todos.empty",
     "defaultMessage": "It's rather empty here..."
   }
-]
+];
